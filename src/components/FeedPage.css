@@ -1,0 +1,371 @@
+.feed-container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.logo-text {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.nav-links {
+    margin-left: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.3s;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.nav-link:hover {
+    color: #000000; 
+}
+
+.logout-btn {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #333;
+}
+
+
+.main-content {
+    flex: 1; 
+    padding: 30px 20px;
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.welcome-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 32px;
+    font-weight: bold;
+    color: #000000; 
+}
+
+.add-post-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.add-post-form input,
+.add-post-form textarea {
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    resize: vertical;
+}
+
+.add-post-form button {
+    background-color: #000000; 
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.add-post-form button:hover {
+    background-color: #333; 
+}
+
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+
+.post-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.post-card .user-id {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 8px;
+}
+
+.post-card h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #000000; 
+}
+
+.post-card .post-body {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    max-height: 4.5em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.post-card .post-body.expanded {
+    max-height: none;
+    overflow: visible;
+}
+
+.readmore-btn {
+    align-self: flex-start;
+    background-color: #000000; 
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.readmore-btn:hover {
+    background-color: #333; 
+}
+
+.post-actions-container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    margin-top: 5px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px; 
+}
+
+.edit-btn {
+    background-color: #000000; 
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.edit-btn:hover {
+    background-color: #333;
+}
+
+.delete-btn {
+    background-color: #e74c3c; 
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+.post-card.editing {
+    background-color: #ffffff; 
+    border: 2px solid #000000; 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); 
+    animation: pulse-border 1.5s infinite alternate; 
+}
+
+
+.edit-input-title {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 1.25em; 
+    font-weight: bold;
+    border: 2px solid #000000; 
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+.edit-input-title:focus {
+    border-color: #00bcd4; 
+    outline: none;
+}
+
+
+.edit-textarea-body {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 1em;
+    border: 1px solid #333;
+    border-radius: 4px;
+    min-height: 150px; 
+    resize: vertical;
+    transition: border-color 0.3s;
+}
+
+.edit-textarea-body:focus {
+    border-color: #00bcd4; 
+    outline: none;
+}
+
+
+
+.edit-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end; 
+}
+
+
+.save-btn {
+    background-color: #28a745; 
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.save-btn:hover {
+    background-color: #1e7e34;
+}
+
+
+.cancel-btn {
+    background-color: #6c757d; 
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.cancel-btn:hover {
+    background-color: #5a6268;
+}
+
+
+@keyframes pulse-border {
+    0% {
+        border-color: #000000;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+    100% {
+        border-color: #333;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+}
+
+@media (max-width: 1400px) {
+    .post-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1024px) {
+    .post-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .logout-btn {
+        position: absolute; 
+        top: 15px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .post-grid {
+        grid-template-columns: 1fr;
+    }
+    .main-content {
+        padding: 20px 15px;
+    }
+    .navbar {
+        padding: 15px;
+    }
+    .logout-btn {
+        margin-top: 10px;
+        position: relative;
+        right: auto;
+        top: auto;
+    }
+}

@@ -1,0 +1,116 @@
+.login-background {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #e6e9f0 0%, #d4d8e0 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+}
+
+.login-card {
+    background: #ffffff; 
+    padding: 40px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); 
+    border-radius: 12px; 
+    width: 100%;
+    max-width: 400px; 
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.login-card:hover {
+    transform: translateY(-3px); 
+}
+
+.login-card h2 {
+    color: #1a1a1a; 
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-align: center; 
+}
+
+.input-group {
+    display: block; 
+    margin-bottom: 25px; 
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 15px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 15px; 
+    border: 1px solid #e0e0e0;
+    border-radius: 8px; 
+    font-size: 16px;
+    color: #333;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #000000; 
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+    outline: none;
+    background-color: white;
+}
+
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.password-container input {
+    padding-right: 40px; 
+    width: 100%;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #555;
+    font-size: 18px; 
+    background: none;
+    border: none;
+    padding: 0;
+    transition: color 0.2s;
+}
+
+.password-toggle:hover {
+    color: #000000;
+}
+
+.submit-btn {
+    width: 100%; 
+    padding: 14px; 
+    background-color: #000000; 
+    color: white; 
+    border: none; 
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.submit-btn:hover {
+    background-color: #333333; 
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
