@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './LoginPage.css'; 
+import './LoginPage.css';
 
 const EyeIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
@@ -16,33 +16,53 @@ const EyeSlashIcon = () => (
 
 const LoginPage = ({ onLoginSuccess }) => {
     const [showPassword, setShowPassword] = useState(false);
+    const [isLoading, setIsLoading] = useState(false); 
+    const [error, setError] = useState(null); 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        setError(null);
+        setIsLoading(true);
 
         const username = e.target.username.value;
         const password = e.target.password.value;
+        
+        try {
+        
+            const response = await fetch('https://dummyjson.com/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    username: username, 
+                    password: password, 
+                    expiresInMins: 30, 
+                }),
+               
+            });
 
-        const savedUser = localStorage.getItem("username");
-        const savedPass = localStorage.getItem("password");
-
-        if (savedUser && savedPass) {
-            if (username === savedUser && password === savedPass) {
-                onLoginSuccess();
-                return;
+            if (!response.ok) {
+                
+                const errorData = await response.json(); 
+                throw new Error(errorData.message || 'Login failed. Please check your credentials.');
             }
-        }
 
-        if (username === "admin123" && password === "admin@123") {
-            localStorage.setItem("username", username);
-            localStorage.setItem("password", password);
-            onLoginSuccess();
-        } 
-        else if (username !== "admin123") {
-            alert("Incorrect Username");
-        } 
-        else {
-            alert("Incorrect Password");
+            const data = await response.json();
+           
+            console.log('Login Successful:', data);
+            
+           
+            localStorage.setItem('userToken', data.token);
+            localStorage.setItem('username', data.username); 
+
+           
+            onLoginSuccess(data.token);
+
+        } catch (err) {
+            console.error('Login Error:', err.message);
+            setError(err.message);
+
+        } finally {
+            setIsLoading(false);
         }
     };
     
@@ -54,47 +74,48 @@ const LoginPage = ({ onLoginSuccess }) => {
         <div className="login-background">
             <div className="login-card">
                 <h2>Login Your Account</h2>
+                {error && <div className="error-message">{error}</div>} 
                 <form onSubmit={handleSubmit}>
                     
                     <div className="input-group">
                         <label htmlFor="username">Username:</label>
                         <input 
-                            type="text" 
-                            id="username" 
-                            name="username" 
-                            placeholder="Enter your name"
-                        />
+                            type="text" id="username" name="username" placeholder="Enter your name"defaultValue="emilys"required disabled={isLoading}/>
                     </div>
                     
                     <div className="input-group">
                         <label htmlFor="password">Password:</label>
                         <div className="password-container">
-                            <input 
-                                type={showPassword ? "text" : "password"} 
-                                id="password"
-                                name="password"
-                                placeholder="Enter password"
-                                required 
-                            />
+                            <input type={showPassword ? "text" : "password"}  id="password" name="password" placeholder="Enter password" defaultValue="emilyspass"required  disabled={isLoading} />
                             
                             <button 
                                 type="button" 
                                 className="password-toggle"
                                 onClick={togglePasswordVisibility}
                                 title={showPassword ? "Hide password" : "Show password"}
+                                disabled={isLoading}
                             >
                                 {showPassword ? <EyeSlashIcon /> : <EyeIcon />}
                             </button>
                         </div>
                     </div>
                     
-                    <button type="submit" className="submit-btn">
-                        Submit
+                    <button 
+                        type="submit" 
+                        className="submit-btn" 
+                        disabled={isLoading} 
+                    >
+                        {isLoading ? 'Logging In...' : 'Submit'}
                     </button>
                 </form>
+                <p className="note-text">
+                    **Test Credentials -
+                    **Username: `emilys`** and **Password: `emilyspass`**
+                </p>
             </div>
         </div>
     );
-};
+}; 
 
-export default LoginPage;
+export default LoginPage; 
+
